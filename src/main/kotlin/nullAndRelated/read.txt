@@ -1,0 +1,24 @@
+Null and related stuffs: -
+In Kotlin, null represents the absence of a value or a null reference. However, Kotlin aims to reduce NullPointerExceptions (NPEs) by introducing null safety as a core part of the language. Kotlin differentiates between nullable types and non-nullable types.
+
+Key Points about null in Kotlin:
+1.	Nullable vs Non-nullable Types:
+o	By default, variables in Kotlin cannot hold a null value. For example:
+                             var nonNullable: String = "Hello"
+                                    nonNullable = null // Compilation error
+o	To allow a variable to hold null, you must explicitly declare it as nullable by appending a ? to the type:
+                             var nullable: String? = "Hello"
+                                   nullable = null // This is allowed
+2.	Safe Calls (?.): To access a nullable variable safely, use the safe call operator (?.):
+                             val length = nullable?.length // Returns null if `nullable` is null
+
+3.	Elvis Operator (?:):
+Use the Elvis operator to provide a default value when a nullable variable is null:
+            val length = nullable?.length ?: 0
+4.	Not-null Assertion (!!):
+Use !! to assert that a nullable value is not null. If the value is null, a NullPointerException will be thrown:
+           val length = nullable!!.length // Throws NPE if `nullable` is null
+5. 6.	Working with Collections:
+   Kotlin provides extensions to handle nulls in collections:
+              val nullableList: List<String?> = listOf("Kotlin", null, "Java")
+             val nonNullableList: List<String> = nullableList.filterNotNull()
